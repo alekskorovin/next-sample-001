@@ -8,7 +8,7 @@ export default async function TodoPage() {
     <ul className="p-5 w-full">
       {todos.map(({ id, title, completed }: Todo) => (
         <li key={id} className="p-5 border-b border-white/40">
-          <Link href={`/todo/${id}`}>
+          <Link href={`/details/${id}`}>
             <p>App - Todo #{id}</p>
             <p>{title}</p>
             <p>was completed: {completed}</p>
