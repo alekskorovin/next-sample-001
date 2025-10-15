@@ -2,7 +2,12 @@
 
 import Image from "next/image";
 
-export default function Home(props: any) {
+interface HomeProps {
+  params: { [key: string]: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+}
+
+export default function Home(props: HomeProps) {
   console.log(props);
 
   return (
