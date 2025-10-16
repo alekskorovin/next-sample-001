@@ -1,18 +1,23 @@
-import { Todo } from "@/types/todos";
+import Link from "next/link";
 
-export async function getStaticProps() {
-  const res = await fetch(`https://jsonplaceholder.typicode.com/todos/`);
-  const projects = await res.json();
+type NavigationMenuType = {
+  link: string;
+  title: string;
+};
 
-  return { props: { projects } };
-}
+const navigationMenu: NavigationMenuType[] = [
+  { link: "/list", title: "Page route. List" },
+  { link: "/todo", title: "App route. Todos" },
+];
 
-export default function Index({ projects }: { projects: Todo[] }) {
+export default function Index() {
   return (
-    <ul className="p-5">
-      {projects.map((project) => (
-        <li className="border-b border-white/40 p-4" key={project.id}>
-          {project.title}
+    <ul className="p-5 w-full">
+      {navigationMenu.map(({ link, title }: NavigationMenuType) => (
+        <li key={link} className="p-5 border-b border-white/40">
+          <Link href={link}>
+            <p>{title}</p>
+          </Link>
         </li>
       ))}
     </ul>

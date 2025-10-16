@@ -1,3 +1,4 @@
+import TodoItem from "@/components/TodoItem";
 import { Todo } from "@/types/todos";
 
 export async function getStaticPaths() {
@@ -24,12 +25,5 @@ export const getStaticProps = async ({
 };
 
 export default function Page({ todo }: { todo: Todo }) {
-  const { id, title, completed } = todo;
-  return (
-    <div className="p-4">
-      <p>Todo #{id}</p>
-      <p>{title}</p>
-      <p>was completed: {completed}</p>
-    </div>
-  );
+  return <TodoItem todo={todo} />;
 }
